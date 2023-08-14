@@ -1,17 +1,25 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const routes = require("./routes/routes");
+const uri =
+  "mongodb+srv://admin:admin@cluster0.70iii4j.mongodb.net/?retryWrites=true&w=majority";
+
+mongoose.connect(uri);
+const database = mongoose.connection;
+
+database.on("error", (error) => {
+  console.log(error);
+});
+
+database.once("connected", () => {
+  console.log("Database Connected");
+});
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Express on Vercel");
-});
-
-app.get("/ok", (req, res) => {
-  return res.status(200).send({ message: "ok", time: new Date() });
-});
+app.use(express.json());
+app.use("/api", routes);
 
 app.listen(5000, () => {
   console.log("Running on port 5000.");
 });
-
-module.exports = app;
