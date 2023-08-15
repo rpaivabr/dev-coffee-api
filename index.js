@@ -1,19 +1,19 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const routes = require("./routes/routes");
-const uri =
-  "mongodb+srv://admin:admin@cluster0.70iii4j.mongodb.net/?retryWrites=true&w=majority";
+// const mongoose = require("mongoose");
+// const uri =
+//   "mongodb+srv://admin:admin@cluster0.70iii4j.mongodb.net/?retryWrites=true&w=majority";
 
-mongoose.connect(uri);
-const database = mongoose.connection;
+// mongoose.connect(uri);
+// const database = mongoose.connection;
 
-database.on("error", (error) => {
-  console.log(error);
-});
+// database.on("error", (error) => {
+//   console.log(error);
+// });
 
-database.once("connected", () => {
-  console.log("Database Connected");
-});
+// database.once("connected", () => {
+//   console.log("Database Connected");
+// });
 
 const app = express();
 
