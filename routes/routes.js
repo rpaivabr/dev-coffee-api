@@ -66,7 +66,7 @@ router.delete("/products/:id", async (req, res) => {
   if (!product) res.status(404).json({ message: "Not found" });
 
   deleteProduct(id);
-  res.status(204).send();
+  res.status(204).json();
 });
 
 module.exports = router;
