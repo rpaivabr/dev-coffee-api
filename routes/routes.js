@@ -1,8 +1,11 @@
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
 const router = express.Router();
+const data = require("../data");
 
-let products = [];
+let products = data
+  .map((product) => ({ id: uuidv4(), ...product }))
+  .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
 const findProduct = (id) => products.find((product) => product.id === id);
 const addProduct = (productToAdd) => products.push(productToAdd);
