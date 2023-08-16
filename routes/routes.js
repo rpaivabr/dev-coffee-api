@@ -29,7 +29,6 @@ router.post("/products", async (req, res) => {
 });
 
 router.get("/products", async (req, res) => {
-  const products = getAllProducts();
   res.json(products);
 });
 
