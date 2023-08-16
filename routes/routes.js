@@ -2,7 +2,7 @@ const express = require("express");
 const { v4: uuidv4 } = require("uuid");
 const router = express.Router();
 
-const products = [];
+let products = [];
 
 const findProduct = (id) => products.find((product) => product.id === id);
 const addProduct = (productToAdd) => products.push(productToAdd);
@@ -66,7 +66,7 @@ router.delete("/products/:id", async (req, res) => {
   if (!product) res.status(404).json({ message: "Not found" });
 
   deleteProduct(id);
-  res.status(204).json();
+  res.status(204).send();
 });
 
 module.exports = router;
