@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/api", routes);
+app.use("/", routes);
 
 app.listen(5000, () => {
   console.log("Running on port 5000.");
